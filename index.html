@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="lt">
 <head>
-  <meta charset="UTF-8">
-  <title>Night Wood Pagrindinis</title>
- <img src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" alt="logotipas">
-
-  <style>
+<meta charset="utf-8"/>
+<title>Night Wood Pagrindinis</title>
+<link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
+<style>
  * {
       margin: 0;
       padding: 0;
@@ -506,109 +506,102 @@
     background-color: rgb(255, 85, 18);
   }
 
-  </style>
+  
+    header {
+      z-index: 2000 !important;
+      position: relative;
+    }
+
+    .logo img {
+      z-index: 2001 !important;
+      position: relative;
+    }
+
+    .overlay {
+      z-index: 1000 !important;
+    }
+    </style>
 </head>
 <body>
-
-  <!-- Header with burger menu -->
-  <header>
-    <div class="logo">
-      <img src="img/IMG_0546.PNG" alt="logotipas">
-  
-      <!-- Кнопка выбора языка -->
-    <div class="language-switcher">
-      <img src="https://i.postimg.cc/1X8YxzsN/icons8-language-100.png" alt="Language Switch" id="languageBtn" onclick="toggleLanguageMenu()">
-    </div>
-
-    <div id="languageDropdown" class="language-dropdown fixed">
-      <ul>
-        <li onclick="setLanguage('lt')"><img src="https://i.postimg.cc/bNNwncLS/icons8-lithuania-50.png" alt="lt"></li>
-        <li onclick="setLanguage('en')"><img src="https://i.postimg.cc/RZYh9s76/icons8-great-britain-50.png" alt="en"></li>
-        <li onclick="setLanguage('ru')"><img src="https://i.postimg.cc/7Z3trd8X/icons8-russian-federation-50.png" alt="ru"></li>
-        <li onclick="setLanguage('es')"><img src="https://i.postimg.cc/fL2ggdnN/icons8-spain-50.png" alt="es"></li>
-      </ul>
-    </div>
-
-      <div class="burger fixed" id="burgerBtn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </header>
-  
-
-  
-  <nav id="mobileMenu" class="mobile-menu">
-    <a href="#" data-i18n="home">Pagrindinis</a>
-    <a href="katalog.html" data-i18n="catalog">Katalogas</a>
-    <a href="#" data-i18n="cart">Krepšelis</a>
-    <a href="#" data-i18n="about">Apie mūsų istoriją</a>
-  
-    <div class="social-icons">
-      <a href="#" target="_blank" class="social-icon"><img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook"></a>
-      <a href="#" target="_blank" class="social-icon"><img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram"></a>
-    </div>
-  
-    <div class="contact-info">
-      <p data-i18n="phone">Tel. numeris: <a href="tel:+37064081312">+370 640 81 312</a></p>
-    </div>
-  </nav>
-  
-  <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
-
-  
-<div class="products-card">
-  <div class="product-card" data-id="1">
-    <div class="ribbon sale">Акция</div>
-    <img src="https://i.postimg.cc/tCWG7rGn/440132346-847674780712524-8695788779793653024-n.jpg" alt="Product Image" class="product-image">
-    
-    <div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
-    <div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
-    <div class="product-price">€46.00</div>
-    <div class="product-buttons">
-      <button class="product-button cart-button" data-i18n="add">Pridėti</button>
-      <button class="product-button buy-button" data-i18n="buy">Pirkti</button>
-    </div>
-  </div>
-  <div class="product-card" data-id="2">
-  
-    <img src="https://i.postimg.cc/QdDG7pj4/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg" alt="Product Image" class="product-image">
-      <div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
-      <div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
-      <div class="product-price">€46.99</div>
-      <div class="product-buttons">
-        <button class="product-button cart-button" data-i18n="add">Pridėti</button>
-        <button class="product-button buy-button" data-i18n="buy">Pirkti</button>
-      </div>
-    </div>
-
-    <div class="product-card" data-id="3">
-      
-      <img src="https://i.postimg.cc/fRv4fJLw/441884598-852034536943215-8936471668167169580-n-1.jpg" alt="Product Image" class="product-image">
-        <div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
-        <div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
-        <div class="product-price">€46.55</div>
-        <div class="product-buttons">
-          <button class="product-button cart-button" data-i18n="add">Pridėti</button>
-          <button class="product-button buy-button" data-i18n="buy">Pirkti</button>
-        </div>
-      </div>
-
-
-</div> 
-
-  <div class="cart" id="cartBtn" onclick="goToCart()">
-    <img src="https://i.postimg.cc/VN732pnp/icons8-shopping-bag-50.png" alt="cart icon" class="cart-icon">
-    <span class="cart-count" id="cartCount">0</span>
-  </div>
+<!-- Header with burger menu -->
+<header>
+<div class="logo">
+<img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
+<!-- Кнопка выбора языка -->
+<div class="language-switcher">
+<img alt="Language Switch" id="languageBtn" onclick="toggleLanguageMenu()" src="https://i.postimg.cc/1X8YxzsN/icons8-language-100.png"/>
 </div>
-  <!-- СКРИПТЫ -->
-  <script>
-    
-  </script>
-    
-  <script>
+<div class="language-dropdown fixed" id="languageDropdown">
+<ul>
+<li onclick="setLanguage('lt')"><img alt="lt" src="https://i.postimg.cc/bNNwncLS/icons8-lithuania-50.png"/></li>
+<li onclick="setLanguage('en')"><img alt="en" src="https://i.postimg.cc/RZYh9s76/icons8-great-britain-50.png"/></li>
+<li onclick="setLanguage('ru')"><img alt="ru" src="https://i.postimg.cc/7Z3trd8X/icons8-russian-federation-50.png"/></li>
+<li onclick="setLanguage('es')"><img alt="es" src="https://i.postimg.cc/fL2ggdnN/icons8-spain-50.png"/></li>
+</ul>
+</div>
+<div class="burger fixed" id="burgerBtn" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+<a data-i18n="home" href="#">Pagrindinis</a>
+<a data-i18n="catalog" href="katalog.html">Katalogas</a>
+<a data-i18n="cart" href="#">Krepšelis</a>
+<a data-i18n="about" href="#">Apie mūsų istoriją</a>
+<div class="social-icons">
+<a class="social-icon" href="#" target="_blank"><img alt="Facebook" src="https://i.postimg.cc/XvnHjLnW/icons8-buy-48.png"/></a>
+<a class="social-icon" href="#" target="_blank"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
+</div>
+<div class="contact-info">
+<p data-i18n="phone">Tel. numeris: <a href="tel:+37064081312">+370 640 81 312</a></p>
+</div>
+</nav>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="products-card">
+<div class="product-card" data-id="1">
+<div class="ribbon sale">Акция</div>
+<img alt="Product Image" class="product-image" src="https://i.postimg.cc/tCWG7rGn/440132346-847674780712524-8695788779793653024-n.jpg"/>
+<div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
+<div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
+<div class="product-price">€46.00</div>
+<div class="product-buttons">
+<button class="product-button cart-button" data-i18n="add">Pridėti</button>
+<button class="product-button buy-button" data-i18n="buy">Pirkti</button>
+</div>
+</div>
+<div class="product-card" data-id="2">
+<img alt="Product Image" class="product-image" src="https://i.postimg.cc/QdDG7pj4/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg"/>
+<div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
+<div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
+<div class="product-price">€46.99</div>
+<div class="product-buttons">
+<button class="product-button cart-button" data-i18n="add">Pridėti</button>
+<button class="product-button buy-button" data-i18n="buy">Pirkti</button>
+</div>
+</div>
+<div class="product-card" data-id="3">
+<img alt="Product Image" class="product-image" src="https://i.postimg.cc/fRv4fJLw/441884598-852034536943215-8936471668167169580-n-1.jpg"/>
+<div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
+<div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
+<div class="product-price">€46.55</div>
+<div class="product-buttons">
+<button class="product-button cart-button" data-i18n="add">Pridėti</button>
+<button class="product-button buy-button" data-i18n="buy">Pirkti</button>
+</div>
+</div>
+</div>
+<div class="cart" id="cartBtn" onclick="goToCart()">
+<img alt="cart icon" class="cart-icon" src="https://i.postimg.cc/VN732pnp/icons8-shopping-bag-50.png"/>
+<span class="cart-count" id="cartCount">0</span>
+</div>
+
+<!-- СКРИПТЫ -->
+<script>
+</script>
+<script>
     // Переводы для языков
     const translations = {
       lt: {
@@ -723,8 +716,7 @@
 
     
   </script>
-  </script>
-    </script>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
