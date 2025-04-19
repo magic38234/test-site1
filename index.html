@@ -1,11 +1,15 @@
+
 <!DOCTYPE html>
+
 <html lang="lt">
 <head>
-  <meta charset="utf-8"/>
-  <title>Night Wood Pagrindinis</title>
-  <link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
-  <style>
- * {
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Night Wood Pagrindinis</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
+<style>
+* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -221,135 +225,236 @@
         font-size: 16px;
       }
     }
+
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 36px; }
+      .hero-content p { font-size: 16px; }
+    }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .product-card {
+      background-color: #2c2c2c;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-card .info {
+      padding: 1rem;
+    }
+    .product-card h3 {
+      margin: 0 0 0.5rem;
+    }
+    .product-card p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #111;
+      color: #888;
+    }
   </style>
-  
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
-    </div>
-    <div class="header-right">
-      <div class="language-switcher">
-        <img alt="Language Switch" src="https://i.postimg.cc/1X8YxzsN/icons8-language-100.png"/>
-        <div class="language-options">
-          <button data-lang="lt"><img alt="lt" src="https://i.postimg.cc/bNNwncLS/icons8-lithuania-50.png"/></button>
-          <button data-lang="ru"><img alt="ru" src="https://i.postimg.cc/s2q9q4Hs/icons8-russian-federation-50.png"/></button>
-          <button data-lang="en"><img alt="en" src="https://i.postimg.cc/RZYh9s76/icons8-great-britain-50.png"/></button>
-          <button data-lang="es"><img alt="es" src="https://i.postimg.cc/sxVBNBz3/icons8-spain-50.png"/></button>
-        </div>
-      </div>
-      <div class="burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </header>
+<header>
+<div class="logo">
+<img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
+</div>
+<div class="header-right">
+<div class="language-switcher">
+<img alt="Language Switch" src="https://i.postimg.cc/1X8YxzsN/icons8-language-100.png"/>
+<div class="language-options">
+<button data-lang="lt"><img alt="lt" src="https://i.postimg.cc/bNNwncLS/icons8-lithuania-50.png"/></button>
+<button data-lang="ru"><img alt="ru" src="https://i.postimg.cc/s2q9q4Hs/icons8-russian-federation-50.png"/></button>
+<button data-lang="en"><img alt="en" src="https://i.postimg.cc/RZYh9s76/icons8-great-britain-50.png"/></button>
+<button data-lang="es"><img alt="es" src="https://i.postimg.cc/sxVBNBz3/icons8-spain-50.png"/></button>
+</div>
+</div>
+<div class="burger">
+<span></span><span></span><span></span>
+</div>
+</div>
+</header>
+<div class="mobile-menu">
+<a onclick="window.location.href='/index.html'">Pagrindinis</a>
+<a onclick="window.location.href='/index2.html'">Katalogas</a>
+<a href="#">Apie mus</a>
+<a href="#">Kontaktai</a>
+<div class="contact">Tel.: +370 640 81 312</div>
+<div class="social-icons">
+<a href="#"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
+<a href="#"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
+</div>
+</div>
+<div class="hero-banner">
+<div class="hero-content">
+<h1>Prabanga medžio ir akmens</h1>
+<p>Išskirtiniai padėklai, mangalai ir lentos – unikalūs dirbiniai iš natūralių medžiagų tavo namams ir dovanoms.</p>
+<button class="hero-btn" data-translate-btn="true" onclick="window.location.href='/index2.html'">Žiūrėti kolekciją</button>
+</div>
+</div>
+<section class="section">
+<h2 data-translate-products-title="true">Populiariausi produktai</h2>
+<div class="products">
+<div class="product-card">
+<img alt="Slate Tray" src="https://i.postimg.cc/tCWG7rGn/440132346-847674780712524-8695788779793653024-n.jpg"/>
+<div class="info">
+<h3 data-product-title="0">Padėklas su graviruoti</h3>
+<p data-product-desc="0">Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
+</div>
+</div>
+<div class="product-card">
+<img alt="Metal Grill" src="https://i.postimg.cc/DzrprDyR/mangalas.jpg"/>
+<div class="info">
+<h3 data-product-title="1">Metaliniai mangalai</h3>
+<p data-product-desc="1">Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
+</div>
+</div>
+<div class="product-card">
+<img alt="Metal Grill" src="https://i.postimg.cc/QdDG7pj4/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg"/>
+<div class="info">
+<h3 data-product-title="2">Paprastas padėklas</h3>
+<p data-product-desc="2">Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
+</div>
+</div>
+</div></section>
+<footer>
+    © 2025 Night Wood. Visos teisės saugomos.
+  </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const burger = document.querySelector(".burger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const languageSwitcher = document.querySelector(".language-switcher");
+    const languageOptions = document.querySelector(".language-options");
 
-  <div class="mobile-menu">
-    <a onclick="window.location.href='/index.html'">Pagrindinis</a>
-    <a onclick="window.location.href='/index2.html'">Katalogas</a>
-    <a href="#">Apie mus</a>
-    <a href="#">Kontaktai</a>
-    <div class="contact">Tel.: +370 640 81 312</div>
-    <div class="social-icons">
-      <a href="#"><img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook"></a>
-      <a href="#"><img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram"></a>
-    </div>
-  </div>
-
-  <div class="hero-banner">
-    <div class="hero-content">
-      <h1>Prabanga medžio ir akmens</h1>
-      <p>Išskirtiniai padėklai, mangalai ir lentos – unikalūs dirbiniai iš natūralių medžiagų tavo namams ir dovanoms.</p>
-      <button class="hero-btn" onclick="window.location.href='/index2.html'">Žiūrėti kolekciją</button>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const burger = document.querySelector(".burger");
-      const mobileMenu = document.querySelector(".mobile-menu");
-      const languageSwitcher = document.querySelector(".language-switcher");
-      const languageOptions = document.querySelector(".language-options");
-
-      const translations = {
-        lt: {
-          title: "Night Wood Pagrindinis",
-          h1: "Prabanga medžio ir akmens",
-          p: "Išskirtiniai padėklai, mangalai ir lentos – unikalūs dirbiniai iš natūralių medžiagų tavo namams ir dovanoms.",
-          btn: "Žiūrėti kolekciją",
-          menu: ["Pagrindinis", "Katalogas", "Apie mus", "Kontaktai"]
-        },
-        ru: {
-          title: "Night Wood Главная",
-          h1: "Роскошь дерева и камня",
-          p: "Эксклюзивные подносы, мангалы и доски — уникальные изделия из натуральных материалов для вашего дома и подарков.",
-          btn: "Смотреть коллекцию",
-          menu: ["Главная", "Каталог", "О нас", "Контакты"]
-        },
-        en: {
-          title: "Night Wood Home",
-          h1: "Luxury of Wood and Stone",
-          p: "Exclusive trays, grills and boards — unique pieces made from natural materials for your home and gifts.",
-          btn: "View Collection",
-          menu: ["Home", "Catalog", "About Us", "Contacts"]
-        },
-        es: {
-          title: "Night Wood Principal",
-          h1: "Lujo de Madera y Piedra",
-          p: "Bandejas, barbacoas y tablas exclusivas: piezas únicas hechas de materiales naturales para tu hogar y regalos.",
-          btn: "Ver colección",
-          menu: ["Inicio", "Catálogo", "Sobre nosotros", "Contacto"]
-        }
-      };
-
-      function applyTranslations(lang) {
-        const t = translations[lang] || translations.lt;
-        document.title = t.title;
-        document.querySelector(".hero-content h1").textContent = t.h1;
-        document.querySelector(".hero-content p").textContent = t.p;
-        document.querySelector(".hero-btn").textContent = t.btn;
-        const menuLinks = document.querySelectorAll(".mobile-menu a");
-        menuLinks.forEach((link, i) => {
-          link.textContent = t.menu[i];
-        });
+    const translations = {
+      lt: {
+        title: "Night Wood Pagrindinis",
+        h1: "Prabanga medžio ir akmens",
+        p: "Išskirtiniai padėklai, mangalai ir lentos – unikalūs dirbiniai iš natūralių medžiagų tavo namams ir dovanoms.",
+        btn: "Žiūrėti kolekciją",
+        menu: ["Pagrindinis", "Katalogas", "Apie mus", "Kontaktai"],
+        productsTitle: "Populiariausi produktai",
+        products: [
+          { title: "Padėklas su graviruoti", desc: "Stilingas ir natūralus akcentas jūsų stalo serviravimui." },
+          { title: "Metaliniai mangalai", desc: "Tvirtas dizainas ir puikus funkcionalumas lauko kepimui." },
+          { title: "Paprastas padėklas", desc: "Stilingas ir natūralus akcentas jūsų stalo serviravimui." }
+        ]
+      },
+      ru: {
+        title: "Night Wood Главная",
+        h1: "Роскошь дерева и камня",
+        p: "Эксклюзивные подносы, мангалы и доски — уникальные изделия из натуральных материалов для вашего дома и подарков.",
+        btn: "Смотреть коллекцию",
+        menu: ["Главная", "Каталог", "О нас", "Контакты"],
+        productsTitle: "Популярные товары",
+        products: [
+          { title: "Поднос с гравировкой", desc: "Стильный и натуральный акцент для сервировки вашего стола." },
+          { title: "Металлические мангалы", desc: "Прочный дизайн и отличная функциональность для готовки на открытом воздухе." },
+          { title: "Простой поднос", desc: "Стильный и натуральный акцент для сервировки вашего стола." }
+        ]
+      },
+      en: {
+        title: "Night Wood Home",
+        h1: "Luxury of Wood and Stone",
+        p: "Exclusive trays, grills and boards — unique pieces made from natural materials for your home and gifts.",
+        btn: "View Collection",
+        menu: ["Home", "Catalog", "About Us", "Contacts"],
+        productsTitle: "Popular Products",
+        products: [
+          { title: "Engraved Tray", desc: "A stylish and natural accent for your table setting." },
+          { title: "Metal Grills", desc: "Durable design and great functionality for outdoor cooking." },
+          { title: "Simple Tray", desc: "A stylish and natural accent for your table setting." }
+        ]
+      },
+      es: {
+        title: "Night Wood Principal",
+        h1: "Lujo de Madera y Piedra",
+        p: "Bandejas, barbacoas y tablas exclusivas: piezas únicas hechas de materiales naturales para tu hogar y regalos.",
+        btn: "Ver colección",
+        menu: ["Inicio", "Catálogo", "Sobre nosotros", "Contacto"],
+        productsTitle: "Productos populares",
+        products: [
+          { title: "Bandeja grabada", desc: "Un toque elegante y natural para tu mesa." },
+          { title: "Parrillas metálicas", desc: "Diseño resistente y excelente funcionalidad para cocinar al aire libre." },
+          { title: "Bandeja simple", desc: "Un toque elegante y natural para tu mesa." }
+        ]
       }
+    };
 
-      const userLang = localStorage.getItem("site-lang") || "lt";
-      applyTranslations(userLang);
-
-      document.querySelectorAll(".language-options button").forEach(button => {
-        button.addEventListener("click", () => {
-          const lang = button.dataset.lang;
-          localStorage.setItem("site-lang", lang);
-          applyTranslations(lang);
-          languageOptions.style.display = "none";
-        });
+    function applyTranslations(lang) {
+      const t = translations[lang] || translations.lt;
+      document.title = t.title;
+      document.querySelector(".hero-content h1").textContent = t.h1;
+      document.querySelector(".hero-content p").textContent = t.p;
+      document.querySelector(".hero-btn").textContent = t.btn;
+      document.querySelector("[data-translate-products-title]").textContent = t.productsTitle;
+      const titles = document.querySelectorAll("[data-product-title]");
+      const descs = document.querySelectorAll("[data-product-desc]");
+      titles.forEach((el, i) => el.textContent = t.products[i].title);
+      descs.forEach((el, i) => el.textContent = t.products[i].desc);
+      const menuLinks = document.querySelectorAll(".mobile-menu a");
+      menuLinks.forEach((link, i) => {
+        link.textContent = t.menu[i];
       });
+    }
 
-      burger.addEventListener("click", () => {
+    const userLang = localStorage.getItem("site-lang") || "lt";
+    applyTranslations(userLang);
+
+    document.querySelectorAll(".language-options button").forEach(button => {
+      button.addEventListener("click", () => {
+        const lang = button.dataset.lang;
+        localStorage.setItem("site-lang", lang);
+        applyTranslations(lang);
         languageOptions.style.display = "none";
-        mobileMenu.classList.toggle("open");
-      });
-
-      languageSwitcher.addEventListener("click", (e) => {
-        mobileMenu.classList.remove("open");
-        const isVisible = languageOptions.style.display === "flex";
-        languageOptions.style.display = isVisible ? "none" : "flex";
-        e.stopPropagation();
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!languageSwitcher.contains(e.target)) {
-          languageOptions.style.display = "none";
-        }
-        if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
-          mobileMenu.classList.remove("open");
-        }
       });
     });
+
+    burger.addEventListener("click", () => {
+      languageOptions.style.display = "none";
+      mobileMenu.classList.toggle("open");
+    });
+
+    languageSwitcher.addEventListener("click", (e) => {
+      mobileMenu.classList.remove("open");
+      const isVisible = languageOptions.style.display === "flex";
+      languageOptions.style.display = isVisible ? "none" : "flex";
+      e.stopPropagation();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!languageSwitcher.contains(e.target)) {
+        languageOptions.style.display = "none";
+      }
+      if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove("open");
+      }
+    });
+  });
   </script>
 </body>
 </html>
