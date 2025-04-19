@@ -207,11 +207,17 @@
       const languageOptions = document.querySelector(".language-options");
 
       burger.addEventListener("click", () => {
+        // Закрываем языковое меню при открытии бургер-меню
+        languageOptions.style.display = "none";
         mobileMenu.classList.toggle("open");
       });
 
-      languageSwitcher.addEventListener("click", () => {
-        languageOptions.style.display = languageOptions.style.display === "flex" ? "none" : "flex";
+      languageSwitcher.addEventListener("click", (e) => {
+        // Закрываем бургер-меню при открытии языкового меню
+        mobileMenu.classList.remove("open");
+        const isVisible = languageOptions.style.display === "flex";
+        languageOptions.style.display = isVisible ? "none" : "flex";
+        e.stopPropagation();
       });
 
       document.querySelectorAll(".language-options button").forEach(button => {
@@ -224,6 +230,9 @@
       document.addEventListener("click", (e) => {
         if (!languageSwitcher.contains(e.target)) {
           languageOptions.style.display = "none";
+        }
+        if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.remove("open");
         }
       });
     });
