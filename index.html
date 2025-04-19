@@ -275,7 +275,41 @@
       background-color: #111;
       color: #888;
     }
-  </style>
+  
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-content h1 {
+    font-size: 32px;
+  }
+  .hero-content p {
+    font-size: 16px;
+  }
+  .hero-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  .section {
+    padding: 2rem 1rem;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  .hero-content p {
+    font-size: 18px;
+  }
+  .hero-btn {
+    font-size: 15px;
+  }
+}
+</style>
 </head>
 <body>
 <header>
