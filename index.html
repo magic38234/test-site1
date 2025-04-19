@@ -294,12 +294,12 @@
 
     .cart-count {
       position: absolute;
-      top: -12px;
-      right: -12px;
+      top: -5px;
+      right: -5px;
       background-color: red;
       color: rgb(255, 255, 255);
       font-size: 12px;
-      padding: 10px;
+      padding: 5px;
       border-radius: 50%;
     }
 
@@ -545,7 +545,7 @@
     <a href="#" data-i18n="about">Apie mūsų istoriją</a>
   
     <div class="social-icons">
-      <a href="#" target="_blank" class="social-icon"><img src="https://i.postimg.cc/XvnHjLnW/icons8-buy-48.png" alt="Facebook"></a>
+      <a href="#" target="_blank" class="social-icon"><img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook"></a>
       <a href="#" target="_blank" class="social-icon"><img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram"></a>
     </div>
   
@@ -726,67 +726,161 @@
     </script>
 
 <script>
-  // Хранилище корзины
-  let cart = JSON.parse(localStorage.getItem('cart')) || {};
-
-  // Обновление счётчика на иконке
-  function updateCartCount() {
-    const count = Object.values(cart).reduce((acc, val) => acc + val, 0);
-    document.getElementById('cartCount').innerText = count;
-  }
-
-  // Добавить в корзину
-  function addToCart(productId) {
-    if (!cart[productId]) cart[productId] = 0;
-    if (cart[productId] < 1000) {
-      cart[productId]++;
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCartCount();
-    } else {
-      alert("Maksimalus kiekis pasiektas (1000)");
-    }
-  }
-
-  // Очистить корзину
-  function clearCart() {
-    cart = {};
-    localStorage.removeItem('cart');
-    updateCartCount();
-  }
-
-  // Добавить кнопку "Очистить корзину"
-  const clearBtn = document.createElement('button');
-  clearBtn.innerText = '🗑️ Išvalyti krepšelį';
-  clearBtn.style.position = 'fixed';
-  clearBtn.style.top = '90px';
-  clearBtn.style.right = '20px';
-  clearBtn.style.padding = '8px 12px';
-  clearBtn.style.borderRadius = '10px';
-  clearBtn.style.backgroundColor = '#e74c3c';
-  clearBtn.style.color = 'white';
-  clearBtn.style.cursor = 'pointer';
-  clearBtn.style.zIndex = '1002';
-  clearBtn.onclick = clearCart;
-  document.body.appendChild(clearBtn);
-
-  // Привязать кнопки "Pridėti"
-  document.querySelectorAll('.cart-button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const productCard = btn.closest('.product-card');
-      const productId = productCard.getAttribute('data-id');
-      addToCart(productId);
-    });
-  });
-
-  // При загрузке страницы
   document.addEventListener('DOMContentLoaded', () => {
-    updateCartCount();
-  });
+    // === ЯЗЫК ===
+    const translations = {
+      lt: {
+        home: "Pagrindinis",
+        catalog: "Katalogas",
+        cart: "Krepšelis",
+        about: "Apie mūsų istoriją",
+        phone: "Tel. numeris: +370 640 81 312",
+        buy: "Pirkti",
+        add: "Pridėti",
+        product1: "Padėklas su graviravimu",
+        product2: "Padėklas be graviravimo",
+        product3: "Padėklas su graf.",
+        product4: "Medinė dėžė",
+        des1: "Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos."
+      },
+      en: {
+        home: "Home",
+        catalog: "Catalog",
+        cart: "Cart",
+        about: "About Us",
+        phone: "Phone: +370 640 81 312",
+        add: "Add",
+        buy: "Buy",
+        product1: "Tray with engraving",
+        product2: "Tray without engraving",
+        product3: "Tray with design",
+        product4: "Wooden box",
+        des1: "Our products are made from eco-friendly and natural materials. We put our heart and soul into every order."
+      },
+      ru: {
+        home: "Главная",
+        catalog: "Каталог",
+        cart: "Корзина",
+        about: "О нас",
+        phone: "Телефон: +370 640 81 312",
+        add: "Добавить",
+        buy: "Купить",
+        product1: "Поднос с гравировкой",
+        product2: "Поднос без гравировки",
+        product3: "Поднос с узором",
+        product4: "Деревянный ящик",
+        des1: "Наша продукция изготовлена из экологичных и натуральных материалов. Мы вкладываем душу в каждый заказ."
+      },
+      es: {
+        home: "Inicio",
+        catalog: "Catálogo",
+        cart: "Carrito",
+        about: "Sobre nosotros",
+        phone: "Teléfono: +370 640 81 312",
+        add: "Añadir",
+        buy: "Comprar",
+        product1: "Bandeja con grabado",
+        product2: "Bandeja sin grabado",
+        product3: "Bandeja con diseño",
+        product4: "Caja de madera",
+        des1: "Nuestros productos están hechos con materiales ecológicos y naturales. Ponemos el alma en cada pedido."
+      }
+    };
 
-  // Заглушка перехода в корзину
-  function goToCart() {
-    alert('Bus atidarytas krepšelis.');
-  }
+    function setLanguage(lang) {
+      localStorage.setItem("language", lang);
+      translatePage(lang);
+    }
+
+    function translatePage(lang) {
+      const elements = document.querySelectorAll("[data-i18n]");
+      elements.forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.innerText = translations[lang][key];
+        }
+      });
+    }
+
+    const savedLang = localStorage.getItem("language") || "lt";
+    translatePage(savedLang);
+
+    // === КОРЗИНА ===
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+    function updateCartCount() {
+      const count = Object.values(cart).reduce((acc, val) => acc + val, 0);
+      document.getElementById('cartCount').innerText = count;
+    }
+
+    function addToCart(productId) {
+      if (!cart[productId]) cart[productId] = 0;
+      if (cart[productId] < 1000) {
+        cart[productId]++;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+      } else {
+        alert("Maksimalus kiekis pasiektas (1000)");
+      }
+    }
+
+    function clearCart() {
+      cart = {};
+      localStorage.removeItem('cart');
+      updateCartCount();
+    }
+
+    const clearBtn = document.createElement('button');
+    clearBtn.innerText = '🗑️ Išvalyti krepšelį';
+    clearBtn.style.position = 'fixed';
+    clearBtn.style.top = '90px';
+    clearBtn.style.right = '20px';
+    clearBtn.style.padding = '8px 12px';
+    clearBtn.style.borderRadius = '10px';
+    clearBtn.style.backgroundColor = '#e74c3c';
+    clearBtn.style.color = 'white';
+    clearBtn.style.cursor = 'pointer';
+    clearBtn.style.zIndex = '1002';
+    clearBtn.onclick = clearCart;
+    document.body.appendChild(clearBtn);
+
+    document.querySelectorAll('.cart-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const productCard = btn.closest('.product-card');
+        const productId = productCard.getAttribute('data-id');
+        addToCart(productId);
+      });
+    });
+
+    updateCartCount();
+
+    // === БУРГЕР-МЕНЮ ===
+    window.toggleMenu = function () {
+      const menu = document.getElementById("mobileMenu");
+      const burger = document.getElementById("burgerBtn");
+      const overlay = document.getElementById("overlay");
+      menu.classList.toggle("open");
+      burger.classList.toggle("open");
+      overlay.classList.toggle("active");
+    };
+
+    // === ЯЗЫКОВОЕ МЕНЮ ===
+    window.toggleLanguageMenu = function () {
+      const dropdown = document.getElementById("languageDropdown");
+      dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+    };
+
+    window.addEventListener("click", function(event) {
+      if (!event.target.closest(".language-switcher")) {
+        document.getElementById("languageDropdown").style.display = "none";
+      }
+    });
+
+    // === Псевдо-переход в корзину ===
+    window.goToCart = function () {
+      alert("Bus atidarytas krepšelis.");
+    };
+  });
 </script>
 </body>
 </html>
