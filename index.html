@@ -505,52 +505,6 @@
     background-color: rgb(255, 85, 18);
   }
 
-  /* Меню для добавления ленты */
-  .badge-menu {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 5px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      z-index: 10;
-    }
-
-    .badge-menu button {
-      font-size: 13px;
-      padding: 4px 8px;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      background: #eee;
-    }
-
-    .badge-menu button:hover {
-      background: #ddd;
-    }
-
-    /* Кнопки для добавления ленты */
-    .ribbon-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-top: 10px;
-      align-items: center;
-    }
-
-    .ribbon-buttons button {
-      font-size: 12px;
-      padding: 5px;
-      border: none;
-      border-radius: 5px;
-      background: #eee;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -638,13 +592,6 @@
           <button class="product-button cart-button" data-i18n="add">Pridėti</button>
           <button class="product-button buy-button" data-i18n="buy">Pirkti</button>
         </div>
-      </div>
-  
-      <div id="badgeMenu" class="badge-menu">
-        <button onclick="addRibbon(currentCard, 'sale')">Акция</button>
-        <button onclick="addRibbon(currentCard, 'new')">Новинка</button>
-        <button onclick="addRibbon(currentCard, 'top')">Топ</button>
-        <button onclick="removeRibbons()">Удалить флажки</button>
       </div>
 
 
