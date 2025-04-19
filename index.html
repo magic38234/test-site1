@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <title>Night Wood Pagrindinis</title>
+  <link rel="icon" type="image/png" href="img/IMG_0546.PNG">
+  <style>
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('img/fonas.JPG'); /* Замените на путь к вашей картинке */
+      height: 100vh; /* Занимает всю высоту экрана */
+      background-size: cover; /* Фон будет покрывать весь экран */
+      background-position: center; /* Центрируем фон */
+      background-attachment: fixed; /* Фиксируем фон при прокрутке */
+      color: #fff; /* Белый цвет текста по умолчанию для контента */
+      font-family: Arial, sans-serif; /* Шрифт по умолчанию */
+      cursor: pointer; 
+      height: 1000px;
+    }
+
+    /* Легкое затемнение фона */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      width: 100%;
+      height: 1000px;
+      background: rgba(0, 0, 0, 0.3); /* Черное затемнение с 30% прозрачностью */
+      z-index: -1; /* Ставим слой фона под все остальные элементы */
+    }
+
+    header {
+      background-color: #22130c;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1001;
+      position: relative;
+    }
+
+    /* Стили для бургер-меню и иконки выбора языка (для правого верхнего угла) */
+    .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 12;
+    }
+
+    /* Стили для элементов на фоне (например, текста, кнопок) */
+    .header-right button {
+      z-index: 15; /* Приоритет кнопки */
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 40px;
+      margin-right: 10px;
+    }
+
+/* Стиль бургер-меню */
+.burger {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1002;
+  position: absolute; 
+  right: 20px; /* Помещаем бургер в правый верхний угол */
+}
+
+.burger-text {
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.burger-text:hover {
+  color: #fbff00;
+  letter-spacing: 1px;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+/* Стили для анимации крестика */
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Стили для мобильного меню */
+  .mobile-menu {
+     position: fixed;
+     
+     right: -300px;
+      width: 300px;
+     height: 100%;
+      background: #333;
+      color: white;
+     display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 60px 20px 20px;
+      transition: right 0.3s ease;
+     z-index: 1000;
+    }
+
+    .mobile-menu.open {
+      right: 0;
+    }
+
+    /* Ссылки в мобильном меню */
+    .mobile-menu a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    } 
+
+    /* Эффект появления для каждой ссылки */
+    .mobile-menu.open a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu a:hover {
+      color: #8f8f8f; /* Цвет при наведении на ссылку */
+      
+    }
+
+    /* Основной контент */
+    .main-content {
+      margin-top: 80px; /* Добавляем отступ, чтобы не перекрывать контент */
+      padding: 20px;
+    }
+    
+    .main-content h1 {
+      color: #474747; /* Новый цвет текста */
+      font-size: 36px; /* Размер шрифта */
+      font-weight: bold; /* Полужирное начертание */
+      text-align: center; /* Выравнивание по центру */
+      margin-bottom: 20px;
+    }
+    /* Стили для контейнера с иконками соцсетей */
+  .social-icons {
+    display: flex;
+    justify-content: center; /* Центрирует иконки по горизонтали */
+    gap: 20px; /* Расстояние между иконками */
+    margin-top: 20px;
+  }
+
+  /* Стили для каждой иконки */
+  .social-icon img {
+    width: 40px; /* Размер иконки */
+    height: 40px; /* Размер иконки */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8; /* Начальная прозрачность */
+    cursor: pointer; 
+  }
+
+  /* Анимация при наведении */
+  .social-icon img:hover {
+    transform: scale(1.1); /* Увеличение иконки */
+    opacity: 1; /* Полная видимость */
+  }
+
+/* Для плавного появления иконок на странице */
+  .social-icons a {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+
+  .social-icons a:nth-child(1) {
+    animation-delay: 0.3s;
+  }
+
+  .social-icons a:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .social-icons a:nth-child(3) {
+   animation-delay: 0.7s;
+  }
+
+  .social-icons a:nth-child(4) {
+   animation-delay: 0.9s;
+  }
+
+  /* Анимация появления */
+  @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+    /* Основной контент */
+    .main-content {
+      margin-top: 80px; /* Добавляем отступ, чтобы не перекрывать контент */
+      padding: 20px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1001;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Стиль корзины */
+    .cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #f8ebc0;
+      border-radius: 50%;
+      padding: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      transition: transform 0.3s ease;
+    }
+
+    /* Анимация увеличения */
+    .cart-icon.animate {
+      transform: scale(1.2);
+    }
+
+    /* Плавный эффект для кнопки добавления товара */
+    .add-to-cart {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+     background-color: #45a049;
+    }
+    .cart-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: rgb(255, 255, 255);
+      font-size: 12px;
+      padding: 5px;
+      border-radius: 50%;
+    }
+
+    /* Анимация при нажатии на корзину */
+    .cart:active {
+      transform: scale(0.9);
+    }
+
+    /* Стиль для иконки корзины (заменили на картинку) */
+    .cart img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+
+    .product-card {
+      background-color: #fff2dfb7;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.253);
+      width: 300px;
+      height: 380px;
+      overflow: hidden;
+      text-align: center;
+      margin: 20px;
+      position: relative;
+    }
+    .products-card {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
+      padding: 16px 20px;
+    }
+
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: auto;
+      object-fit: cover;
+      background-color: #ffcba4;
+    }
+
+    .product-content {
+      padding: 16px;
+    }
+
+    .product-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 0 10px 10px 10px;
+      color: #080808;
+      justify-content: center;
+      line-height: 1.4;
+    }
+
+    .product-description {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #413e3e;
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .product-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      padding: 0 10px;
+      margin-top: 10px;
+    }
+
+    .product-button {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+
+      color: white;
+    }
+
+    .cart-button:hover {
+      background-color: #9d1517;
+    }
+
+    .cart-button {
+      background-color: #e60012;
+      cursor: pointer; 
+      color: rgb(255, 224, 224);
+    }
+
+    .buy-button:hover {
+      background-color: #3c9b06;
+    }
+
+    .buy-button {
+      background-color: #4ed301;
+      color: rgb(201, 247, 209);
+       
+      padding: 8px 16px; 
+    }
+
+    
+
+ /* Стили для кнопки выбора языка */
+.language-switcher {
+  display: inline-block;
+  margin-right: 15px; /* Расстояние между кнопкой и бургером */
+  cursor: pointer;
+  position: relative; /* Для позиционирования выпадающего списка */
+  cursor: pointer; 
+
+ height: 35px;
+  left: 1100px;
+}
+
+.language-switcher img {
+  width: 40px; /* Размер картинки */
+  height: 40px; /* Размер картинки */
+  transition: transform 0.3s ease; /* Плавная анимация */
+}
+
+.language-switcher:hover img {
+  transform: scale(1.1); /* Немного увеличиваем картинку при наведении */
+}
+
+/* Выпадающий список */
+.language-dropdown {
+  display: none; /* Скрыто по умолчанию */
+  position: absolute;
+  top: 75px; /* Расстояние от картинки */
+  right: 90px;
+  background-color: rgb(75, 72, 72);
+  border: 1px solid #c7c5c5;
+  color: #080808;
+  box-shadow: 0px 8px 16px rgba(194, 194, 194, 0.2);
+  z-index: 1000;
+  width: 60px;
+  border-radius: 16px;
+  
+}
+
+.language-dropdown ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.language-dropdown li {
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.language-dropdown li:hover {
+  background-color: #cacaca23;
+  border-radius: 10px;
+  transition: background-color 0.1s ease, opacity 0.1s ease, transform  0.1s ease;
+}
+
+
+.ribbon {
+  position: absolute;
+  top: 15px;
+  left: -45px;
+  width: 160px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ebeaea;
+  font-size: 14px;
+  font-weight: bold;
+  
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  letter-spacing: 1px;
+  }
+
+  .ribbon.new {
+    background-color: rgba(0, 255, 0, 0.8);
+  }
+
+  .ribbon.top {
+    background-color: rgba(255, 0, 191, 0.8);
+  }
+
+  .ribbon.sale {
+    background-color: rgb(255, 85, 18);
+  }
+
+  /* Меню для добавления ленты */
+  .badge-menu {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 10;
+    }
+
+    .badge-menu button {
+      font-size: 13px;
+      padding: 4px 8px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background: #eee;
+    }
+
+    .badge-menu button:hover {
+      background: #ddd;
+    }
+
+    /* Кнопки для добавления ленты */
+    .ribbon-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .ribbon-buttons button {
+      font-size: 12px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #eee;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with burger menu -->
+  <header>
+    <div class="logo">
+      <img src="img/IMG_0546.PNG" alt="logotipas">
+  
+      <!-- Кнопка выбора языка -->
+    <div class="language-switcher">
+      <img src="https://i.postimg.cc/wT034T3k/icons8-language-100.png" alt="Language Switch" id="languageBtn" onclick="toggleLanguageMenu()">
+    </div>
+
+    <div id="languageDropdown" class="language-dropdown fixed">
+      <ul>
+        <li onclick="setLanguage('lt')"><img src="https://i.postimg.cc/bNNwncLS/icons8-lithuania-50.png" alt="lt"></li>
+        <li onclick="setLanguage('en')"><img src="https://i.postimg.cc/RZYh9s76/icons8-great-britain-50.png" alt="en"></li>
+        <li onclick="setLanguage('ru')"><img src="https://i.postimg.cc/85QCf7nT/icons8-russian-federation-50.png" alt="ru"></li>
+        <li onclick="setLanguage('es')"><img src="https://i.postimg.cc/RF7Z7vjK/icons8-spain-50.png" alt="es"></li>
+      </ul>
+    </div>
+
+      <div class="burger fixed" id="burgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+  
+
+  
+  <nav id="mobileMenu" class="mobile-menu">
+    <a href="#" data-i18n="home">Pagrindinis</a>
+    <a href="katalog.html" data-i18n="catalog">Katalogas</a>
+    <a href="#" data-i18n="cart">Krepšelis</a>
+    <a href="#" data-i18n="about">Apie mūsų istoriją</a>
+  
+    <div class="social-icons">
+      <a href="#" target="_blank" class="social-icon"><img src="img/icons8-facebook-50.png" alt="Facebook"></a>
+      <a href="#" target="_blank" class="social-icon"><img src="img/IMG_0549.PNG" alt="Instagram"></a>
+    </div>
+  
+    <div class="contact-info">
+      <p data-i18n="phone">Tel. numeris: <a href="tel:+37064081312">+370 640 81 312</a></p>
+    </div>
+  </nav>
+  
+  <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+  
+<div class="products-card">
+  <div class="product-card" data-id="1">
+    <div class="ribbon sale">Акция</div>
+    <img src="img/440132346_847674780712524_8695788779793653024_n.jpg" alt="Product Image" class="product-image">
+    
+    <div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
+    <div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
+    <div class="product-price">€46.00</div>
+    <div class="product-buttons">
+      <button class="product-button cart-button" data-i18n="add">Pridėti</button>
+      <button class="product-button buy-button" data-i18n="buy">Pirkti</button>
+    </div>
+  </div>
+  <div class="product-card" data-id="2">
+  
+    <img src="img/1453368273_121412851_1263882373960351_7394105723998329079_n.jpg" alt="Product Image" class="product-image">
+      <div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
+      <div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
+      <div class="product-price">€46.99</div>
+      <div class="product-buttons">
+        <button class="product-button cart-button" data-i18n="add">Pridėti</button>
+        <button class="product-button buy-button" data-i18n="buy">Pirkti</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-id="3">
+      
+      <img src="img/441884598_852034536943215_8936471668167169580_n (1).jpg" alt="Product Image" class="product-image">
+        <div class="product-title" data-i18n="product1">Padėklas su graviravimu</div>
+        <div class="product-description" data-i18n="des1">Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos.</div>
+        <div class="product-price">€46.55</div>
+        <div class="product-buttons">
+          <button class="product-button cart-button" data-i18n="add">Pridėti</button>
+          <button class="product-button buy-button" data-i18n="buy">Pirkti</button>
+        </div>
+      </div>
+  
+      <div id="badgeMenu" class="badge-menu">
+        <button onclick="addRibbon(currentCard, 'sale')">Акция</button>
+        <button onclick="addRibbon(currentCard, 'new')">Новинка</button>
+        <button onclick="addRibbon(currentCard, 'top')">Топ</button>
+        <button onclick="removeRibbons()">Удалить флажки</button>
+      </div>
+
+
+</div> 
+
+  <div class="cart" id="cartBtn" onclick="goToCart()">
+    <img src="img/icons8-shopping-bag-50.png" alt="cart icon" class="cart-icon">
+    <span class="cart-count" id="cartCount">0</span>
+  </div>
+</div>
+  <!-- СКРИПТЫ -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.getElementById('burgerBtn');
+      const overlay = document.getElementById('overlay');
+      const cart = document.getElementById('cartBtn');
+    
+      menu.classList.toggle('open');
+      burger.classList.toggle('open');
+      overlay.classList.toggle('active');
+    
+      if (menu.classList.contains('open')) {
+        cart.style.display = 'none';
+      } else {
+        cart.style.display = 'block';
+      }
+    }
+    
+    let cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
+    updateCart();
+    
+    function addToCart() {
+      if (cartCount >= 100) {
+        alert("Negalite pridėti daugiau nei 100 prekių.");
+        return;
+      }
+      cartCount++;
+      localStorage.setItem('cartCount', cartCount);
+      updateCart();
+    }
+    
+    function updateCart() {
+      document.getElementById("cartCount").textContent = cartCount;
+    }
+    
+    function goToCart() {
+      alert('Perėjimas į krepšelį');
+    }
+    
+    function showModal(modalId) {
+      alert('Parodyti informaciją apie prekę');
+    }
+  
+  
+    </script>
+    
+  <script>
+    // Переводы для языков
+    const translations = {
+      lt: {
+        home: "Pagrindinis",
+        catalog: "Katalogas",
+        cart: "Krepšelis",
+        about: "Apie mūsų istoriją",
+        phone: "Tel. numeris: +370 640 81 312",
+        buy: "Pirkti",
+        add: "Pridėti",
+        product1: "Padėklas su graviravimu",
+        product2: "Padėklas be graviravimo",
+        product3: "Padėklas su graf.",
+        product4: "Medinė dėžė",
+        des1: "Mūsų gaminiai pagaminti iš ekologiškų ir natūralių medžiagų. Į kiekvieną užsakymą įdedame dalelę savo sielos."
+      },
+      en: {
+        home: "Home",
+        catalog: "Catalog",
+        cart: "Cart",
+        about: "About Us",
+        phone: "Phone: +370 640 81 312",
+        add: "Add",
+        buy: "Buy",
+        product1: "Tray with engraving",
+        product2: "Tray without engraving",
+        product3: "Tray with design",
+        product4: "Wooden box",
+        des1: "Our products are made from eco-friendly and natural materials. We put our heart and soul into every order."
+      },
+      ru: {
+        home: "Главная",
+        catalog: "Каталог",
+        cart: "Корзина",
+        about: "О нас",
+        phone: "Телефон: +370 640 81 312",
+        add: "Добавить",
+        buy: "Купить",
+        product1: "Поднос с гравировкой",
+        product2: "Поднос без гравировки",
+        product3: "Поднос с узором",
+        product4: "Деревянный ящик",
+        des1: "Наша продукция изготовлена из экологичных и натуральных материалов. Мы вкладываем душу в каждый заказ."
+      },
+      es: {
+        home: "Inicio",
+        catalog: "Catálogo",
+        cart: "Carrito",
+        about: "Sobre nosotros",
+        phone: "Teléfono: +370 640 81 312",
+        add: "Añadir",
+        buy: "Comprar",
+        product1: "Bandeja con grabado",
+        product2: "Bandeja sin grabado",
+        product3: "Bandeja con diseño",
+        product4: "Caja de madera",
+        des1: "Nuestros productos están hechos con materiales ecológicos y naturales. Ponemos el alma en cada pedido."
+      }
+    };
+  
+    // Функция для применения перевода
+    function setLanguage(lang) {
+      localStorage.setItem("language", lang); // Сохраняем язык
+      translatePage(lang); // Переводим страницу
+    }
+  
+    // Функция для перевода контента на выбранный язык
+    function translatePage(lang) {
+      const elements = document.querySelectorAll("[data-i18n]");
+      elements.forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.innerText = translations[lang][key];
+        }
+      });
+    }
+  
+    // Загружаем выбранный язык при старте страницы
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("language") || "lt"; // По умолчанию литовский
+      document.getElementById("languageSwitcher").value = savedLang; // Устанавливаем значение выпадающего списка
+      translatePage(savedLang); // Переводим контент
+    });
+  
+    // Открытие/закрытие выпадающего меню для выбора языка
+    function toggleLanguageMenu() {
+      const dropdown = document.getElementById("languageDropdown");
+      dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+    }
+  
+    // Закрытие меню, если клик был вне его
+    window.addEventListener("click", function(event) {
+      if (!event.target.closest(".language-switcher")) {
+        document.getElementById("languageDropdown").style.display = "none";
+      }
+    });
+  
+    // Автоматический выбор языка в зависимости от языка браузера
+    window.addEventListener("DOMContentLoaded", () => {
+      const browserLang = navigator.language || navigator.userLanguage; // Получаем язык браузера
+      const supportedLangs = ['lt', 'en', 'ru', 'es'];
+      let defaultLang = 'lt'; // Язык по умолчанию (литовский)
+  
+      if (supportedLangs.includes(browserLang.substring(0, 2))) {
+        defaultLang = browserLang.substring(0, 2);
+      }
+  
+      // Сохраняем язык в localStorage и применяем
+      localStorage.setItem("language", defaultLang);
+      setLanguage(defaultLang);
+    });
+
+    const ribbonConfig = {
+      sale: { text: 'АКЦИЯ', class: 'sale' },
+      new: { text: 'НОВИНКА', class: 'new' },
+      top: { text: 'ТОП ТОВАР', class: 'top' }
+    };
+
+    let currentCard = null;
+
+    function addRibbon(card, type) {
+      if (card.querySelector(`.ribbon-wrapper.${type}`)) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'ribbon-wrapper ${type}';
+
+      const ribbon = document.createElement('div');
+      ribbon.className = 'ribbon ${type}';
+      ribbon.textContent = ribbonConfig[type].text;
+
+      wrapper.appendChild(ribbon);
+      card.appendChild(wrapper);
+    }
+
+    function applyRibbon(type) {
+      if (currentCard) {
+        const id = currentCard.dataset.id;
+        addRibbon(currentCard, type);
+
+        // сохранить
+        let saved = JSON.parse(localStorage.getItem(`ribbons-${id}`)) || [];
+        if (!saved.includes(type)) {
+          saved.push(type);
+          localStorage.setItem(`ribbons-${id}`, JSON.stringify(saved));
+        }
+
+        document.getElementById('badgeMenu').style.display = 'none';
+      }
+    }
+
+    function removeRibbons() {
+      if (currentCard) {
+        const id = currentCard.dataset.id;
+
+        Object.keys(ribbonConfig).forEach(type => {
+          const ribbon = currentCard.querySelector(`.ribbon-wrapper.${type}`);
+          if (ribbon) ribbon.remove();
+        });
+
+        // удалить из localStorage
+        localStorage.removeItem(`ribbons-${id}`);
+        document.getElementById('badgeMenu').style.display = 'none';
+      }
+    }
+
+    function loadRibbons() {
+      document.querySelectorAll('.product-card').forEach(card => {
+        const id = card.dataset.id;
+        const saved = JSON.parse(localStorage.getItem(`ribbons-${id}`)) || [];
+        saved.forEach(type => addRibbon(card, type));
+      });
+    }
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', e => {
+        e.stopPropagation();
+        const menu = document.getElementById('badgeMenu');
+        const rect = card.getBoundingClientRect();
+
+        currentCard = card;
+
+        menu.style.display = 'flex';
+        menu.style.top = '${rect.top + window.scrollY + 10}px';
+        menu.style.left = '${rect.left + window.scrollX + card.offsetWidth - 140}px';
+      });
+    });
+
+    document.addEventListener('click', () => {
+      document.getElementById('badgeMenu').style.display = 'none';
+    });
+
+    window.addEventListener('DOMContentLoaded', loadRibbons); 
+  </script>
+  </script>
+    </script>
+</body>
+</html>
