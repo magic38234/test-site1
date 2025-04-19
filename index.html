@@ -5,7 +5,7 @@
   <title>Night Wood Pagrindinis</title>
   <link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
   <style>
-    * {
+     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -17,17 +17,26 @@
       cursor: pointer;
       min-height: 100vh;
     }
+    .top-bar {
+      background-color: rgba(75, 46, 46, 0.9); /* коричневый полупрозрачный overlay */
+      height: 100px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 15;
+    }
     header {
       background-color: transparent;
       padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
+      position: absolute;
       width: 100%;
       top: 0;
       left: 0;
-      z-index: 2000;
+      z-index: 20;
     }
     .logo {
       display: flex;
@@ -89,7 +98,6 @@
       border-radius: 3px;
       transition: 0.3s ease;
     }
-
     .mobile-menu {
       position: fixed;
       top: 80px;
@@ -102,7 +110,7 @@
       flex-direction: column;
       padding: 20px;
       transition: right 0.3s ease;
-      z-index: 1999;
+      z-index: 9999;
       border-radius: 10px;
     }
     .mobile-menu.open {
@@ -131,31 +139,43 @@
       width: 24px;
       height: 24px;
     }
-
     .hero-banner {
       position: relative;
       height: 100vh;
-      background-image: url('https://i.postimg.cc/7hQRW2zz/photo-2025-04-17-17-27-30.jpg');
+      background: url('https://i.postimg.cc/7hQRW2zz/photo-2025-04-17-17-27-30.jpg') repeat;
       background-size: cover;
       background-position: center;
+      animation: moveBg 20s linear infinite;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      overflow: hidden;
     }
-    .hero-banner::before {
+    @keyframes moveBg {
+      0% {
+        background-position: center center;
+      }
+      50% {
+        background-position: center top;
+      }
+      100% {
+        background-position: center center;
+      }
+    }
+    .hero-banner::after {
       content: "";
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.6);
-      z-index: 0;
+      z-index: 1;
     }
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       max-width: 90%;
       padding: 0 20px;
     }
@@ -189,7 +209,6 @@
       background-color: #cc00ff;
       color: white;
     }
-
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 36px;
@@ -206,25 +225,71 @@
       const languageSwitcher = document.querySelector(".language-switcher");
       const languageOptions = document.querySelector(".language-options");
 
+      const translations = {
+        lt: {
+          title: "Night Wood Pagrindinis",
+          h1: "Prabanga medžio ir akmens",
+          p: "Išskirtiniai padėklai, mangalai ir lentos – unikalūs dirbiniai iš natūralių medžiagų tavo namams ir dovanoms.",
+          btn: "Žiūrėti kolekciją",
+          menu: ["Pagrindinis", "Katalogas", "Apie mus", "Kontaktai"]
+        },
+        ru: {
+          title: "Night Wood Главная",
+          h1: "Роскошь дерева и камня",
+          p: "Эксклюзивные подносы, мангалы и доски — уникальные изделия из натуральных материалов для вашего дома и подарков.",
+          btn: "Смотреть коллекцию",
+          menu: ["Главная", "Каталог", "О нас", "Контакты"]
+        },
+        en: {
+          title: "Night Wood Home",
+          h1: "Luxury of Wood and Stone",
+          p: "Exclusive trays, grills and boards — unique pieces made from natural materials for your home and gifts.",
+          btn: "View Collection",
+          menu: ["Home", "Catalog", "About Us", "Contacts"]
+        },
+        es: {
+          title: "Night Wood Principal",
+          h1: "Lujo de Madera y Piedra",
+          p: "Bandejas, barbacoas y tablas exclusivas: piezas únicas hechas de materiales naturales para tu hogar y regalos.",
+          btn: "Ver colección",
+          menu: ["Inicio", "Catálogo", "Sobre nosotros", "Contacto"]
+        }
+      };
+
+      function applyTranslations(lang) {
+        const t = translations[lang] || translations.lt;
+        document.title = t.title;
+        document.querySelector(".hero-content h1").textContent = t.h1;
+        document.querySelector(".hero-content p").textContent = t.p;
+        document.querySelector(".hero-btn").textContent = t.btn;
+        const menuLinks = document.querySelectorAll(".mobile-menu a");
+        menuLinks.forEach((link, i) => {
+          link.textContent = t.menu[i];
+        });
+      }
+
+      const userLang = localStorage.getItem("site-lang") || "lt";
+      applyTranslations(userLang);
+
+      document.querySelectorAll(".language-options button").forEach(button => {
+        button.addEventListener("click", () => {
+          const lang = button.dataset.lang;
+          localStorage.setItem("site-lang", lang);
+          applyTranslations(lang);
+          languageOptions.style.display = "none";
+        });
+      });
+
       burger.addEventListener("click", () => {
-        // Закрываем языковое меню при открытии бургер-меню
         languageOptions.style.display = "none";
         mobileMenu.classList.toggle("open");
       });
 
       languageSwitcher.addEventListener("click", (e) => {
-        // Закрываем бургер-меню при открытии языкового меню
         mobileMenu.classList.remove("open");
         const isVisible = languageOptions.style.display === "flex";
         languageOptions.style.display = isVisible ? "none" : "flex";
         e.stopPropagation();
-      });
-
-      document.querySelectorAll(".language-options button").forEach(button => {
-        button.addEventListener("click", () => {
-          document.documentElement.lang = button.dataset.lang;
-          location.reload();
-        });
       });
 
       document.addEventListener("click", (e) => {
