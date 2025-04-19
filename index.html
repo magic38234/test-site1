@@ -294,12 +294,12 @@
 
     .cart-count {
       position: absolute;
-      top: -5px;
-      right: -5px;
+      top: -12px;
+      right: -12px;
       background-color: red;
       color: rgb(255, 255, 255);
       font-size: 12px;
-      padding: 5px;
+      padding: 10px;
       border-radius: 50%;
     }
 
@@ -604,50 +604,8 @@
 </div>
   <!-- СКРИПТЫ -->
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const burger = document.getElementById('burgerBtn');
-      const overlay = document.getElementById('overlay');
-      const cart = document.getElementById('cartBtn');
     
-      menu.classList.toggle('open');
-      burger.classList.toggle('open');
-      overlay.classList.toggle('active');
-    
-      if (menu.classList.contains('open')) {
-        cart.style.display = 'none';
-      } else {
-        cart.style.display = 'block';
-      }
-    }
-    
-    let cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
-    updateCart();
-    
-    function addToCart() {
-      if (cartCount >= 100) {
-        alert("Negalite pridėti daugiau nei 100 prekių.");
-        return;
-      }
-      cartCount++;
-      localStorage.setItem('cartCount', cartCount);
-      updateCart();
-    }
-    
-    function updateCart() {
-      document.getElementById("cartCount").textContent = cartCount;
-    }
-    
-    function goToCart() {
-      alert('Perėjimas į krepšelį');
-    }
-    
-    function showModal(modalId) {
-      alert('Parodyti informaciją apie prekę');
-    }
-  
-  
-    </script>
+  </script>
     
   <script>
     // Переводы для языков
@@ -766,5 +724,69 @@
   </script>
   </script>
     </script>
+
+<script>
+  // Хранилище корзины
+  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+  // Обновление счётчика на иконке
+  function updateCartCount() {
+    const count = Object.values(cart).reduce((acc, val) => acc + val, 0);
+    document.getElementById('cartCount').innerText = count;
+  }
+
+  // Добавить в корзину
+  function addToCart(productId) {
+    if (!cart[productId]) cart[productId] = 0;
+    if (cart[productId] < 1000) {
+      cart[productId]++;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    } else {
+      alert("Maksimalus kiekis pasiektas (1000)");
+    }
+  }
+
+  // Очистить корзину
+  function clearCart() {
+    cart = {};
+    localStorage.removeItem('cart');
+    updateCartCount();
+  }
+
+  // Добавить кнопку "Очистить корзину"
+  const clearBtn = document.createElement('button');
+  clearBtn.innerText = '🗑️ Išvalyti krepšelį';
+  clearBtn.style.position = 'fixed';
+  clearBtn.style.top = '90px';
+  clearBtn.style.right = '20px';
+  clearBtn.style.padding = '8px 12px';
+  clearBtn.style.borderRadius = '10px';
+  clearBtn.style.backgroundColor = '#e74c3c';
+  clearBtn.style.color = 'white';
+  clearBtn.style.cursor = 'pointer';
+  clearBtn.style.zIndex = '1002';
+  clearBtn.onclick = clearCart;
+  document.body.appendChild(clearBtn);
+
+  // Привязать кнопки "Pridėti"
+  document.querySelectorAll('.cart-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const productCard = btn.closest('.product-card');
+      const productId = productCard.getAttribute('data-id');
+      addToCart(productId);
+    });
+  });
+
+  // При загрузке страницы
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+  });
+
+  // Заглушка перехода в корзину
+  function goToCart() {
+    alert('Bus atidarytas krepšelis.');
+  }
+</script>
 </body>
 </html>
