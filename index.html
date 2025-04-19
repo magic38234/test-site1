@@ -360,6 +360,70 @@
   transform: scale(1.2);
   filter: grayscale(0%) brightness(1);
 }
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.product-card {
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 400px;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.product-card .info {
+  padding: 1rem;
+  flex-grow: 1;
+}
+.product-card h3 {
+  margin: 0 0 0.5rem;
+}
+.product-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #111;
+  color: #888;
+}
+.product-footer {
+  text-align: center;
+  padding: 1rem;
+}
+.buy-button {
+  background-color: #feebe2;
+  color: rgb(24, 24, 24);
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  display: inline-block;
+  border: none;
+  font-family:'Segoe UI', sans-serif;
+}
+.buy-button:hover {
+  background-color: #fafafa;
+}
+
 </style>
 </head>
 <body>
@@ -368,27 +432,23 @@
 <img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
 </div>
 <div class="header-right">
-
 </div>
-
 <div class="burger" id="burgerBtn">
-  <span></span>
-  <span></span>
-  <span></span>
+<span></span>
+<span></span>
+<span></span>
 </div>
-
 <div id="menuOverlay">
-  <a href="/index.html">Pagrindinis</a>
-  <a href="/index2.html">Katalogas</a>
-  <a href="#about">Apie mus</a>
-  <a href="#contacts">Kontaktai</a>
-  <div class="contact">Tel.: +370 640 81 312</div>
-  <div class="social-icons">
-    <a href="#"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" /></a>
-    <a href="#"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" /></a>
-  </div>
+<a href="/index.html">Pagrindinis</a>
+<a href="/index2.html">Katalogas</a>
+<a href="#about">Apie mus</a>
+<a href="#contacts">Kontaktai</a>
+<div class="contact">Tel.: +370 640 81 312</div>
+<div class="social-icons">
+<a href="#"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
+<a href="#"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
 </div>
-
+</div>
 <script>
   const burgerBtn = document.getElementById('burgerBtn');
   const menuOverlay = document.getElementById('menuOverlay');
@@ -414,7 +474,6 @@
     menuOverlay.classList.remove('open');
   });
 </script>
-
 </header>
 <div class="mobile-menu">
 <a onclick="window.location.href='/index.html'">Pagrindinis</a>
@@ -423,8 +482,8 @@
 <a href="#">Kontaktai</a>
 <div class="contact">Tel.: +370 640 81 312</div>
 <div class="social-icons">
-<a href="#"><img alt="Facebook"  onclick="window.location.href='https://www.facebook.com/NightWood.lt'" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
-<a href="#"><img alt="Instagram"  onclick="window.location.href='https://www.instagram.com/nightwood.lt/'" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
+<a href="#"><img alt="Facebook" onclick="window.location.href='https://www.facebook.com/NightWood.lt'" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
+<a href="#"><img alt="Instagram" onclick="https://www.instagram.com/nightwood.lt/" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
 </div>
 </div>
 <div class="hero-banner">
@@ -443,21 +502,21 @@
 <h3 data-product-title="0">Padėklas su graviruoti</h3>
 <p data-product-desc="0">Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
 </div>
-</div>
+<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div><button class="buy-button">PIRKTI</button></div></div>
 <div class="product-card">
 <img alt="Metal Grill" src="https://i.postimg.cc/DzrprDyR/mangalas.jpg"/>
 <div class="info">
 <h3 data-product-title="1">Metaliniai mangalai</h3>
 <p data-product-desc="1">Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
 </div>
-</div>
+<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 550</div><button class="buy-button">PIRKTI</button></div></div>
 <div class="product-card">
 <img alt="Metal Grill" src="https://i.postimg.cc/QdDG7pj4/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg"/>
 <div class="info">
 <h3 data-product-title="2">Paprastas padėklas</h3>
 <p data-product-desc="2">Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
 </div>
-</div>
+<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 30</div><button class="buy-button">PIRKTI</button></div></div>
 </div></section>
 <footer>
     © 2025 Night Wood. Visos teisės saugomos.
