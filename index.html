@@ -45,13 +45,12 @@
     .logo {
       display: flex;
       align-items: center;
-      transition: transform 0.3s ease;
+  
     }
-    .logo:hover {
-      transform: scale(1.2);
-    }
+
+    
     .logo img {
-      width: 50px;
+      width:150px;
     }
     .header-right {
       display: flex;
@@ -60,40 +59,10 @@
       margin-left: auto;
       position: relative;
     }
-    .language-switcher {
-      position: relative;
-      z-index: 2001;
-    }
-    .language-switcher img {
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-    }
-    .language-options {
-      position: absolute;
-      top: 50px;
-      right: 10px;
-      background: #222;
-      border-radius: 8px;
-      overflow: hidden;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    }
-    .language-options button {
-      background: none;
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      text-align: left;
-      cursor: pointer;
-    }
-    .language-options button:hover {
-      background: #444;
-    }
+
     .burger {
-      width: 30px;
-      height: 25px;
+      width: 60px;
+      height: 55px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -310,37 +279,86 @@
   }
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-.product {
-  background-color: #222;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+.burger {
+  width: 36px;
+  height: 28px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 10001;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
 }
-.product:hover {
-  transform: translateY(-5px);
+.burger span {
+  display: block;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
 }
-.product img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+.burger:hover {
+  transform: scale(1.1);
 }
-.product h3 {
-  font-size: 1.1rem;
-  margin: 0.5rem 1rem 0 1rem;
+
+#menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
 }
-.product p {
-  font-size: 0.95rem;
-  padding: 0 1rem 1rem;
-  line-height: 1.4;
+
+#menuOverlay.open {
+  transform: translateY(0);
+}
+
+#menuOverlay a {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  transition: color 0.3s ease;
+}
+
+#menuOverlay a:hover {
+  color: #ff6b00;
+}
+
+#menuOverlay .contact {
+  font-size: 1rem;
+  color: #aaa;
+  margin-top: 2rem;
+}
+
+#menuOverlay .social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+#menuOverlay .social-icons img {
+  width: 30px;
+  height: 30px;
+  filter: grayscale(100%) brightness(0.9);
+  transition: transform 0.3s ease;
+}
+
+#menuOverlay .social-icons img:hover {
+  transform: scale(1.2);
+  filter: grayscale(0%) brightness(1);
 }
 </style>
 </head>
@@ -351,22 +369,60 @@
 </div>
 <div class="header-right">
 <div class="language-switcher">
-<img alt="Language Switch" src="https://i.postimg.cc/1X8YxzsN/icons8-language-100.png"/>
-<div class="language-options">
-<button data-lang="lt"><img alt="lt" src="https://i.postimg.cc/bNNwncLS/icons8-lithuania-50.png"/></button>
-<button data-lang="ru"><img alt="ru" src="https://i.postimg.cc/s2q9q4Hs/icons8-russian-federation-50.png"/></button>
-<button data-lang="en"><img alt="en" src="https://i.postimg.cc/RZYh9s76/icons8-great-britain-50.png"/></button>
-<button data-lang="es"><img alt="es" src="https://i.postimg.cc/sxVBNBz3/icons8-spain-50.png"/></button>
-</div>
-</div>
+
 <div class="burger">
 <span></span><span></span><span></span>
 </div>
 </div>
+
+<div class="burger" id="burgerBtn">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div id="menuOverlay">
+  <a href="/index.html">Pagrindinis</a>
+  <a href="/index2.html">Katalogas</a>
+  <a href="#about">Apie mus</a>
+  <a href="#contacts">Kontaktai</a>
+  <div class="contact">Tel.: +370 640 81 312</div>
+  <div class="social-icons">
+    <a href="#"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" /></a>
+    <a href="#"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" /></a>
+  </div>
+</div>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const langSwitch = document.querySelector('.language-switcher');
+
+  burgerBtn.addEventListener('click', () => {
+    menuOverlay.classList.toggle('open');
+    document.querySelector('.language-options').style.display = 'none';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!burgerBtn.contains(e.target) && !menuOverlay.contains(e.target) && !langSwitch.contains(e.target)) {
+      menuOverlay.classList.remove('open');
+      document.querySelector('.language-options').style.display = 'none';
+    }
+  });
+
+  langSwitch.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const options = document.querySelector('.language-options');
+    const visible = options.style.display === 'flex';
+    options.style.display = visible ? 'none' : 'flex';
+    menuOverlay.classList.remove('open');
+  });
+</script>
+
 </header>
 <div class="mobile-menu">
 <a onclick="window.location.href='/index.html'">Pagrindinis</a>
-<a onclick="window.location.href=''">Katalogas</a>
+<a onclick="window.location.href='/index2.html'">Katalogas</a>
 <a href="#">Apie mus</a>
 <a href="#">Kontaktai</a>
 <div class="contact">Tel.: +370 640 81 312</div>
@@ -379,7 +435,7 @@
 <div class="hero-content">
 <h1>Prabanga medžio ir akmens</h1>
 <p>Išskirtiniai padėklai, mangalai ir lentos – unikalūs dirbiniai iš natūralių medžiagų tavo namams ir dovanoms.</p>
-<button class="hero-btn" data-translate-btn="true" onclick="window.location.href=''">Žiūrėti kolekciją</button>
+<button class="hero-btn" data-translate-btn="true" onclick="window.location.href='/index2.html'">Žiūrėti kolekciją</button>
 </div>
 </div>
 <section class="section">
