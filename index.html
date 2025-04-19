@@ -466,114 +466,11 @@
   document.addEventListener("DOMContentLoaded", () => {
     const burger = document.querySelector(".burger");
     const mobileMenu = document.querySelector(".mobile-menu");
-    const languageSwitcher = document.querySelector(".language-switcher");
-    const languageOptions = document.querySelector(".language-options");
+  
 
-    const translations = {
-      lt: {
-        title: "Night Wood Pagrindinis",
-        h1: "Prabanga medžio ir akmens",
-        p: "Išskirtiniai padėklai, mangalai ir lentos – unikalūs dirbiniai iš natūralių medžiagų tavo namams ir dovanoms.",
-        btn: "Žiūrėti kolekciją",
-        menu: ["Pagrindinis", "Katalogas", "Apie mus", "Kontaktai"],
-        productsTitle: "Populiariausi produktai",
-        products: [
-          { title: "Padėklas su graviruoti", desc: "Stilingas ir natūralus akcentas jūsų stalo serviravimui." },
-          { title: "Metaliniai mangalai", desc: "Tvirtas dizainas ir puikus funkcionalumas lauko kepimui." },
-          { title: "Paprastas padėklas", desc: "Stilingas ir natūralus akcentas jūsų stalo serviravimui." }
-        ]
-      },
-      ru: {
-        title: "Night Wood Главная",
-        h1: "Роскошь дерева и камня",
-        p: "Эксклюзивные подносы, мангалы и доски — уникальные изделия из натуральных материалов для вашего дома и подарков.",
-        btn: "Смотреть коллекцию",
-        menu: ["Главная", "Каталог", "О нас", "Контакты"],
-        productsTitle: "Популярные товары",
-        products: [
-          { title: "Поднос с гравировкой", desc: "Стильный и натуральный акцент для сервировки вашего стола." },
-          { title: "Металлические мангалы", desc: "Прочный дизайн и отличная функциональность для готовки на открытом воздухе." },
-          { title: "Простой поднос", desc: "Стильный и натуральный акцент для сервировки вашего стола." }
-        ]
-      },
-      en: {
-        title: "Night Wood Home",
-        h1: "Luxury of Wood and Stone",
-        p: "Exclusive trays, grills and boards — unique pieces made from natural materials for your home and gifts.",
-        btn: "View Collection",
-        menu: ["Home", "Catalog", "About Us", "Contacts"],
-        productsTitle: "Popular Products",
-        products: [
-          { title: "Engraved Tray", desc: "A stylish and natural accent for your table setting." },
-          { title: "Metal Grills", desc: "Durable design and great functionality for outdoor cooking." },
-          { title: "Simple Tray", desc: "A stylish and natural accent for your table setting." }
-        ]
-      },
-      es: {
-        title: "Night Wood Principal",
-        h1: "Lujo de Madera y Piedra",
-        p: "Bandejas, barbacoas y tablas exclusivas: piezas únicas hechas de materiales naturales para tu hogar y regalos.",
-        btn: "Ver colección",
-        menu: ["Inicio", "Catálogo", "Sobre nosotros", "Contacto"],
-        productsTitle: "Productos populares",
-        products: [
-          { title: "Bandeja grabada", desc: "Un toque elegante y natural para tu mesa." },
-          { title: "Parrillas metálicas", desc: "Diseño resistente y excelente funcionalidad para cocinar al aire libre." },
-          { title: "Bandeja simple", desc: "Un toque elegante y natural para tu mesa." }
-        ]
-      }
-    };
-
-    function applyTranslations(lang) {
-      const t = translations[lang] || translations.lt;
-      document.title = t.title;
-      document.querySelector(".hero-content h1").textContent = t.h1;
-      document.querySelector(".hero-content p").textContent = t.p;
-      document.querySelector(".hero-btn").textContent = t.btn;
-      document.querySelector("[data-translate-products-title]").textContent = t.productsTitle;
-      const titles = document.querySelectorAll("[data-product-title]");
-      const descs = document.querySelectorAll("[data-product-desc]");
-      titles.forEach((el, i) => el.textContent = t.products[i].title);
-      descs.forEach((el, i) => el.textContent = t.products[i].desc);
-      const menuLinks = document.querySelectorAll(".mobile-menu a");
-      menuLinks.forEach((link, i) => {
-        link.textContent = t.menu[i];
-      });
-    }
-
-    const userLang = localStorage.getItem("site-lang") || "lt";
-    applyTranslations(userLang);
-
-    document.querySelectorAll(".language-options button").forEach(button => {
-      button.addEventListener("click", () => {
-        const lang = button.dataset.lang;
-        localStorage.setItem("site-lang", lang);
-        applyTranslations(lang);
-        languageOptions.style.display = "none";
-      });
+    
     });
-
-    burger.addEventListener("click", () => {
-      languageOptions.style.display = "none";
-      mobileMenu.classList.toggle("open");
-    });
-
-    languageSwitcher.addEventListener("click", (e) => {
-      mobileMenu.classList.remove("open");
-      const isVisible = languageOptions.style.display === "flex";
-      languageOptions.style.display = isVisible ? "none" : "flex";
-      e.stopPropagation();
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!languageSwitcher.contains(e.target)) {
-        languageOptions.style.display = "none";
-      }
-      if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove("open");
-      }
-    });
-  });
+  
   </script>
 </body>
 </html>
